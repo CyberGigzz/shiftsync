@@ -1,0 +1,11 @@
+services:
+  notification_db:
+    image: postgres:16-alpine
+    container_name: notification_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: shiftsync_user
+      POSTGRES_PASSWORD: shiftsync_password
+      POSTGRES_DB: shiftsync_db
+    ports:
+      - "5432:5432"
