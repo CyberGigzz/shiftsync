@@ -1,4 +1,4 @@
-CREATE TABLE Users (
+CREATE TABLE users (
     user_id         BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     first_name      VARCHAR(100) NOT NULL,
     last_name       VARCHAR(100) NOT NULL,
@@ -8,13 +8,13 @@ CREATE TABLE Users (
     created_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Positions (
+CREATE TABLE positions (
     position_id     BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     position_name   VARCHAR(100) NOT NULL UNIQUE,
     description     TEXT
 );
 
-CREATE TABLE User_Positions (
+CREATE TABLE user_positions (
     user_id         BIGINT NOT NULL,
     position_id     BIGINT NOT NULL,
     
@@ -26,7 +26,7 @@ CREATE TABLE User_Positions (
         FOREIGN KEY(position_id) REFERENCES Positions(position_id) ON DELETE CASCADE
 );
 
-CREATE TABLE Shifts (
+CREATE TABLE shifts (
     shift_id        BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     user_id         BIGINT,
     position_id     BIGINT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE Shifts (
         FOREIGN KEY(position_id) REFERENCES Positions(position_id) ON DELETE CASCADE
 );
 
-CREATE TABLE Availability (
+CREATE TABLE availability (
     user_id         BIGINT NOT NULL,
     day_of_week     VARCHAR(10) NOT NULL CHECK (day_of_week IN ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')),
     start_time      TIME,
@@ -51,7 +51,7 @@ CREATE TABLE Availability (
         FOREIGN KEY(user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
-CREATE TABLE SwapRequests (
+CREATE TABLE swapRequests (
     request_id          BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     requester_id        BIGINT NOT NULL,
     requestee_id        BIGINT NOT NULL,

@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Data // Lombok for getters, setters, hashCode, and equals
+@Data 
 @NoArgsConstructor
-@Embeddable // Mark this as a class that can be embedded as an ID
+@Embeddable 
 public class AvailabilityId implements Serializable {
 
     @Column(name = "user_id")
@@ -18,7 +18,6 @@ public class AvailabilityId implements Serializable {
     @Column(name = "day_of_week")
     private String dayOfWeek;
 
-    // You can add a constructor for convenience if needed
     public AvailabilityId(Long userId, String dayOfWeek) {
         this.userId = userId;
         this.dayOfWeek = dayOfWeek;

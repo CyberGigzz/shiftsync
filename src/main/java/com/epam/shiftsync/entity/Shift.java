@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "Shifts")
+@Table(name = "shifts")
 public class Shift {
 
     @Id
