@@ -20,7 +20,6 @@ public class Availability {
     private User user;
 
 
-
     @Column(name = "start_time")
     private LocalTime startTime;
 
