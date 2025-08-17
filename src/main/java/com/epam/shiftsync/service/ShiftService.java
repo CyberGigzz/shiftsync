@@ -56,7 +56,7 @@ public class ShiftService {
                 .collect(Collectors.toList());
     }
 
-    private ShiftDto convertToDto(Shift shift) {
+    public ShiftDto convertToDto(Shift shift) {
         User user = shift.getUser();
         UserDto userDto = null;
         if (user != null) {

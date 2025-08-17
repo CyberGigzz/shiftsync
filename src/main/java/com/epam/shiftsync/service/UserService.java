@@ -71,7 +71,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
     
-    private UserDto convertToUserDto(User user) {
+    public UserDto convertToUserDto(User user) {
         return new UserDto(
                 user.getId(),
                 user.getFirstName(),
