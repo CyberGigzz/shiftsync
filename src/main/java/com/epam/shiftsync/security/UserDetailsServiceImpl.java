@@ -1,7 +1,6 @@
 package com.epam.shiftsync.security;
 
 import com.epam.shiftsync.repository.UserRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,10 +22,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         com.epam.shiftsync.entity.User appUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
-        return new User(
+        return new UserDetailsImpl( 
+                appUser.getId(),
                 appUser.getEmail(),
                 appUser.getPasswordHash(),
-                Collections.singletonList(() -> appUser.getRole()) 
+                Collections.singletonList(() -> appUser.getRole())
         );
     }
 }

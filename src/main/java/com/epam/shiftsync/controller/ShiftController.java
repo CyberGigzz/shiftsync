@@ -38,7 +38,6 @@ public class ShiftController {
         return ResponseEntity.ok(shifts);
     }
 
-
     @PutMapping("/{shiftId}")
     @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<ShiftDto> updateShift(
